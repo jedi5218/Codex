@@ -1,0 +1,14 @@
+
+
+class Actor:
+
+    def __init__(self, entity):
+        self.controlled_entity = entity
+        self.time_credit = 0
+
+
+    def list_actions(self):
+        pass
+
+    def schedule_action(self):
+        pass

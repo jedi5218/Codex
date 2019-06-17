@@ -58,80 +58,37 @@ def assemble_target_stack(target):
                 break
     return attack, target_stack
 
-if __name__ == '__main__':
-    structure = Property(
+
+structure = Property(
         'structure',
         50,
         'Structure',
         'The parameter describing how far the object is from falling apart'
     )
-    armor = Property(
-        'armor',
-        StructuralVector(10, 10, 10),
-        'Armor',
-        'The parameter describing the amount by which the damage is reduced'
-    )
-    protection = Property(
-        'protection',
-        StructuralVector(1, 1, 1),
-        'Protection',
-        'The parameter describing how much damage this object gets vs how much damage is passed to children'
-    )
-    cover = Property(
-        'cover',
-        0.67,
-        'Cover',
-        'The percentage of the object that this layer hides'
-    )
-    size = Property(
-        'size',
-        100,
-        'Size',
-        'size of an entity'
-    )
-    # enchantment = Mutator(
-    #     lambda x: x+StructuralVector(5, 5, 5),
-    #     Properties.armor,
-    #     1,
-    #     'Armor enchantment +5',
-    #     'Increases armor in all categories by 5')
-    #
-    # enchantment2 = copy(enchantment)
-    # enchantment2.mutator = lambda x: x*StructuralVector(1.2, 1.2, 1.2)
-    # enchantment2.priority = 2
-    # enchantment2.description = 'Multiplies armor in all categories by 1.2'
+armor = Property(
+    'armor',
+    StructuralVector(10, 10, 10),
+    'Armor',
+    'The parameter describing the amount by which the damage is reduced'
+)
+protection = Property(
+    'protection',
+    StructuralVector(1, 1, 1),
+    'Protection',
+    'The parameter describing how much damage this object gets vs how much damage is passed to children'
+)
+cover = Property(
+    'cover',
+    0.67,
+    'Cover',
+    'The percentage of the object that this layer hides'
+)
+size = Property(
+    'size',
+    100,
+    'Size',
+    'size of an entity'
+)
 
-    hit = Action('hit', 3, attack, [''], 'attack', 'Do the attack')
-    damage = Action('suffer_damage', 0, suffer_damage, '', 'suffer damage', '')
-
-    dummy = Entity('dummy', False,
-                   structure,
-                   armor,
-                   protection,
-                   cover,
-                   hit,
-                   copy(damage))
-
-    gambezon = Entity('gambezon', False,
-                      dummy,
-                      structure.make(15),
-                      armor.make(StructuralVector(5, 2, 0)),
-                      protection.make(StructuralVector(0, 0.5, 0.2)),
-                      cover.make(0.9),
-                      damage)
-
-    print(gambezon.children)
-    print(dummy.parent)
-    dmg = StructuralVector(30, 30, 0)
-
-    print('damage is '+str(dmg))
-    print('before attack dummy`s structure at: ' + str(dummy.structure()) + 'sp')
-    turn()
-    dummy.hit(target=dummy, damage=dmg)
-    print(dummy.timer)
-    print(dummy.structure)
-    print('after attack dummy`s structure: ' + str(dummy.structure()) + 'sp')
-
-    # print(dummy)
-
-
+hit = Action('hit', 3, attack, [''], 'attack', 'Do the attack')
+damage = Action('suffer_damage', 0, suffer_damage, '', 'suffer damage', '')
