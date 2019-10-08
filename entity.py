@@ -1,7 +1,6 @@
-from property import Property,Mutator,MutatorType
+from property import Property, Mutator, MutatorType
 from action import Action
 from copy import copy
-
 
 def turn():
     for entity in Entity.array:
@@ -12,6 +11,9 @@ def turn():
 
 
 class Entity:
+    '''
+    Class Entity is a base class for a
+    '''
     array = set()
 
     def __init__(self, name: str,
@@ -25,7 +27,6 @@ class Entity:
         self.actions = dict()
         self.parent = None
         self.name = name
-        self.timer = 0.
         self.virtual = virtual
         for trait in args:
             if isinstance(trait, Property):
@@ -81,7 +82,6 @@ class Entity:
         for property in self.properties.values():
             if not property.hidden:
                 description +=str(property)+'\n\n---\n'
-
         return description
 
     def add_property(self, property):
@@ -110,7 +110,6 @@ class Entity:
         else:
             raise KeyError('{} is already in the object\'s children'.format(child.name))
 
-
 class EntityView:
 
     def __init__(self, entity: Entity, key, *context: Entity):
@@ -136,7 +135,6 @@ class EntityView:
             for mutator in mutators:
                 var = mutator(var, **{'{}_{}'.format(self.key, item): var})
             return var if not isinstance(var, Entity) else EntityView(var, '_'.join((self.key, item)))
-
 
 class BaseEntityView:
 

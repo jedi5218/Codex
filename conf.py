@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Codex'
+project = 'Codex TRPG Server'
 copyright = '2019, jedi5218'
 author = 'jedi5218'
 

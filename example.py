@@ -7,7 +7,7 @@ from copy import copy
 import random
 
 
-def attack(this,target, damage):
+def attack(this, target, damage):
     attack, target_stack = assemble_target_stack(target)
 
     #at this point full stack of objects is established, and attack execution starts
@@ -77,6 +77,12 @@ if __name__ == '__main__':
         'Protection',
         'The parameter describing how much damage this object gets vs how much damage is passed to children'
     )
+    penetration_minimum = Property(
+        'protection',
+        StructuralVector(1, 1, 1),
+        'Protection',
+        'The parameter describing how much damage this object gets vs how much damage is passed to children'
+    )
     cover = Property(
         'cover',
         0.67,
@@ -126,9 +132,9 @@ if __name__ == '__main__':
 
     print('damage is '+str(dmg))
     print('before attack dummy`s structure at: ' + str(dummy.structure()) + 'sp')
-    turn()
+    # turn()
     dummy.hit(target=dummy, damage=dmg)
-    print(dummy.timer)
+    # print(dummy.timer)
     print(dummy.structure)
     print('after attack dummy`s structure: ' + str(dummy.structure()) + 'sp')
 

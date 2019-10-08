@@ -48,11 +48,12 @@ class MutatorType(Enum):
 
 
 class Mutator:
-    def __init__(self, type: MutatorType, property, priority, mutator):
+    def __init__(self, type: MutatorType, property, priority, predicate, mutator):
         self.type = type
         self.property = property
         self.priority = priority
         self.mutator = mutator
+        self.predicate = predicate
 
     def __call__(self, *args, **kwargs):
         return self.mutator(*args, **kwargs)

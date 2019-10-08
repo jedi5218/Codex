@@ -12,7 +12,7 @@ class Action:
         from entity import Entity, EntityView
         for key in kwargs.keys():
             if isinstance(kwargs[key], Entity):
-                kwargs[key].timer -= self.duration
+                # kwargs[key].timer -= self.duration
                 kwargs[key] = EntityView(kwargs[key], key)
         if self.actor:
             self.function(**kwargs, this=EntityView(self.actor, 'this'))
